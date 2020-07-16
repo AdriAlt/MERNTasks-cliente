@@ -8,11 +8,10 @@ import {
     LIMPIAR_TAREA
 } from '../../types';
 
-
 export default (state, action) => {
     switch(action.type) {
         case TAREAS_PROYECTO:
-            return{
+            return {
                 ...state,
                 tareasproyecto: action.payload
             }
@@ -23,31 +22,30 @@ export default (state, action) => {
                 errortarea: false
             }
         case VALIDAR_TAREA:
-            return{
+            return {
                 ...state,
                 errortarea: true
             }
         case ELIMINAR_TAREA:
-            return{
+            return {
                 ...state,
-                tareasproyecto: state.tareasproyecto.filter(tarea => tarea._id !== action.payload)
+                tareasproyecto: state.tareasproyecto.filter(tarea => tarea._id !== action.payload )
             }
         case ACTUALIZAR_TAREA:
-            return{
+            return {
                 ...state,
-                tareasproyecto: state.tareasproyecto.map(tarea => tarea._id === action.payload._id ? action.payload  : tarea)
+                tareasproyecto: state.tareasproyecto.map(tarea => tarea._id === action.payload._id ? action.payload : tarea )
             }
         case TAREA_ACTUAL:
-        return {
-            ...state,
-            tareaseleccionada: action.payload 
-        }
+            return {
+                ...state,
+                tareaseleccionada: action.payload
+            }
         case LIMPIAR_TAREA:
-                return {
-                    ...state,
-                    tareaseleccionada: null
-                }
-
+            return {
+                ...state,
+                tareaseleccionada: null
+            }
         default:
             return state;
     }

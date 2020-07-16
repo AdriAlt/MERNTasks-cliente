@@ -7,7 +7,7 @@ import AuthContext from '../../context/autenticacion/authContext';
 
 const Proyectos = () => {
 
-    // Extraer la informacion de autenticacion
+    // Extraer la información de autenticación
     const authContext = useContext(AuthContext);
     const { usuarioAutenticado } = authContext;
 
@@ -17,21 +17,22 @@ const Proyectos = () => {
     }, [])
 
     return ( 
-        <div className='contenedor-app'>
+        <div className="contenedor-app">
             <Sidebar />
 
-            <div className='seccion-principal'>
-                <Barra/>
-                <main>
-                    <FormTarea/>
+            <div className="seccion-principal">
+                <Barra />
 
-                    <div className='contenedor-tareas'>
-                        <ListadoTareas/>
+                <main>
+                    <FormTarea />
+
+                    <div className="contenedor-tareas">
+                        <ListadoTareas />
                     </div>
                 </main>
             </div>
         </div>
-    );
+     );
 }
  
 export default Proyectos;

@@ -7,46 +7,50 @@ import { CSSTransition, TransitionGroup } from 'react-transition-group';
 
 const ListadoProyectos = () => {
 
-     // extraer proyectos de state inicial 
-     const proyectosContext = useContext(proyectoContext);
-     const { mensaje, proyectos, obtenerProyectos } = proyectosContext;
+    // Extrar proyectos de state inicial
+    const proyectosContext = useContext(proyectoContext);
+    const { mensaje, proyectos, obtenerProyectos } = proyectosContext;
 
-     const alertaContext = useContext(AlertaContext);
-     const { alerta, mostrarAlerta } = alertaContext;
+    const alertaContext = useContext(AlertaContext);
+    const { alerta, mostrarAlerta } = alertaContext;
 
-    //obtener proyectos cuando carga el componente
-     useEffect(() => {
-         
-        //si hay un error
-         if(mensaje) {
+    // Obtener proyectos cuando carga el componente
+    useEffect(() => {
+        // si hay un error
+        if(mensaje) {
             mostrarAlerta(mensaje.msg, mensaje.categoria);
-         }
+        }
+
         obtenerProyectos();
-        //eslint-disable-next-line
+        // eslint-disable-next-line
     }, [mensaje]);
 
-     //revisar si los proyectos tiene contenido
-     if(proyectos.length === 0 ) return <p>No hay proyectos, comineza creando  uno</p>; // porque cuando lo movamos a usa bd real. no va a haber proyectos
-  
-    return (
-        <ul className='listado-proyectos'>
-            { alerta ? ( <div className={`alerta ${alerta.categoria}`}>{alerta.msg}</div> ) : null}
-            <TransitionGroup>
-            {proyectos.map(proyecto => (
-                <CSSTransition
-                    key={proyecto._id}
-                    timeout={300}
-                    classNames='proyecto'
-                >
-                    <Proyecto
-                     proyecto={proyecto}
-                    />
-                </CSSTransition>
-            ))}
-            </TransitionGroup>
+    // revisar si proyectos tiene contenido
+    if(proyectos.length === 0 ) return <p>No hay proyectos, comienza creando uno</p>;
 
+    return ( 
+
+        <ul className="listado-proyectos">
+            
+        
+            { alerta   ? ( <div className={`alerta ${alerta.categoria} `}>{alerta.msg}</div>  ) : null  }
+
+
+            <TransitionGroup>
+                {proyectos.map(proyecto => (
+                    <CSSTransition
+                        key={proyecto._id}
+                        timeout={200}
+                        classNames="proyecto"
+                    >
+                        <Proyecto 
+                            proyecto={proyecto}
+                        />
+                    </CSSTransition>
+                ))}
+            </TransitionGroup>
         </ul>
-    );
+     );
 }
  
 export default ListadoProyectos;

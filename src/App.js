@@ -18,24 +18,21 @@ if(token) {
 }
 
 function App() {
-
-  console.log(process.env.REACT_APP_BACKEND_URL);
-
   return (
     <ProyectoState>
       <TareaState>
         <AlertaState>
           <AuthState>
             <Router>
-              <Switch>
-                <Route exact path='/' component={Login} />
-                <Route exact path='/nueva-cuenta' component={NuevaCuenta} />
-                <RutaPrivada exact path='/proyectos' component={Proyectos} />
-              </Switch>
+                <Switch>
+                    <Route exact path="/" component={Login} />
+                    <Route exact path="/nueva-cuenta" component={NuevaCuenta} />
+                    <RutaPrivada exact path="/proyectos" component={Proyectos} />
+                </Switch>
             </Router>
           </AuthState>
-      </AlertaState>
-    </TareaState>
+        </AlertaState>
+      </TareaState>
     </ProyectoState>
   );
 }

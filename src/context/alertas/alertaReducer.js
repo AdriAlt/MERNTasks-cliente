@@ -1,11 +1,10 @@
-import { MOSTRAR_ALERTA, OCULTAR_ALERTA } from '../../types';
+import { MOSTRAR_ALERTA, OCULTAR_ALERTA} from '../../types';
 
-// funcion que cambia los datos
 export default (state, action) => {
     switch(action.type) {
         case MOSTRAR_ALERTA:
             return {
-                alerta: action.payload //info q trae 
+                alerta: action.payload
             }
         case OCULTAR_ALERTA:
             return {
